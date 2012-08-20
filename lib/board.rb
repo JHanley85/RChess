@@ -61,7 +61,10 @@ class Board
       end
       case id[0]
         when "p" 
-          if Pawn.is_move_valid(from,to,player,capture)
+          if capture && Pawn.is_move_valid(from,to,player,capture)
+            self.capture(id,player)  
+          end
+          if Pawn.is_move_valid(from,to,player)
             self.update(id,to,player)
             @turn=="W" ? @turn="B" : @turn="W"
           end
@@ -72,7 +75,16 @@ class Board
       raise OutOfTurnError
     end
   end
-
+  def capture(id,player)
+    case player
+      when "W"
+        @bpip.delete(id)
+      when "B"
+        @bpip.delete(id)
+      else
+        raise ArgumentError
+      end
+  end
   def update(id,to,player)
     if player=="W"
       @wpip[id]=to
