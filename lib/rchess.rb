@@ -1,6 +1,7 @@
-require "rchess/version"
-require "rchess/base"
-require "rchess/board"
+require 'rchess/version'
+require 'board'
+require 'pawn'
+require 'ruleerrors'
 module Rchess
   # Your code goes here...
 end

@@ -1,0 +1,37 @@
+require 'pawn'
+class Board
+  def initialize
+     @wpip={"pa"=>"2a","pb"=>"2b","pc"=>"2c","pd"=>"2d","pe"=>"2e","pf"=>"2f","ng"=>"2g","ph"=>"2h"}
+     @bpip={"pa"=>"7a","pb"=>"7b","pc"=>"7c","pd"=>"7d","pe"=>"7e","pf"=>"7f","ng"=>"7g","ph"=>"7h"}
+  end
+
+  def locate(id,player)
+      player=='W'? @wpip[id] : @bpip[id] 	     
+  end
+
+  def move(id,to,player)
+    case id[0]
+       when "p"
+         self.locate(id,player)
+         Pawn.is_move_valid
+         Pawn.move(id,from,to,player)
+        else
+         return "Error"
+     end
+  end
+  def pip_count
+    return @wpip.count+@bpip.count
+  end	
+
+  def print
+    @8=[""],[""],[""],[""],"","","",""]
+    @7=["","","","","","","",""]
+    @6=["","","","","","","",""]
+    @5=["","","","","","","",""]
+    @4=["","","","","","","",""]
+    @3=["","","","","","","",""]
+    @2=["","","","","","","",""]
+    @1=["","","","","","","",""]
+  end
+end
+		

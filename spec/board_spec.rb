@@ -3,7 +3,7 @@ require 'board'
 describe Board, "initial placement" do
   it "initializes the board" do  
     board= Board.new
-    board.pip_count.should eq(16)
+    board.pip_count.should eq(32)
   end
   it "locates pieces" do
     board=Board.new
